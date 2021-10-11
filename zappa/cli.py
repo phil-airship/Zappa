@@ -31,7 +31,6 @@ import click
 import hjson as json
 import pkg_resources
 import requests
-import slugify
 import toml
 import yaml
 from click import BaseCommand, Context
@@ -2514,7 +2513,7 @@ class ZappaCLI:
         # Related:  https://github.com/Miserlou/Zappa/pull/664
         #           https://github.com/Miserlou/Zappa/issues/678
         #           And various others from Slack.
-        self.lambda_name = slugify.slugify(self.project_name + "-" + self.api_stage)
+        self.lambda_name = self.project_name + "-" + self.api_stage
 
         # Load stage-specific settings
         self.s3_bucket_name = self.stage_config.get(
@@ -3094,7 +3093,7 @@ class ZappaCLI:
         return False
 
     def get_project_name(self):
-        return slugify.slugify(os.getcwd().split(os.sep)[-1])[:15]
+        return os.getcwd().split(os.sep)[-1][:15]
 
     def colorize_log_entry(self, string):
         """

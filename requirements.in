@@ -6,7 +6,6 @@ jmespath
 kappa==0.6.0
 pip>=9.0.1
 python-dateutil
-python-slugify
 PyYAML
 future
 # previous version don't work with urllib3 1.24
